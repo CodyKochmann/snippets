@@ -1,4 +1,4 @@
-def download_file(url, output_path="./", verbose=False, allow_duplicates=False):
+def download_file(url, output_path="./", verbose=False, allow_duplicates=False, f_name=''):
     # downloads a given url to the output_path with duplicate checking options
     # by: Cody Kochmann
     from urllib2 import urlopen
@@ -6,7 +6,8 @@ def download_file(url, output_path="./", verbose=False, allow_duplicates=False):
     def v_print(s):
         if(verbose):
             print(s)
-    f_name = url.split('/')[-1]
+    if f_name == '':
+      f_name = url.split('/')[-1]
     if f_name in listdir(output_path):
       if allow_duplicates == False:
         v_print(f_name+" already downloaded")
